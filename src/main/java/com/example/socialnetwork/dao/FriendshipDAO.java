@@ -26,12 +26,13 @@ public class FriendshipDAO {
         }
     }
 
-    public void updateStatus(Friendship friendship) {
-        String sql = "update Friendship set status = ? where FriendshipId = ?";
+    public void updateStatus(int userId, int friendId, String status) {
+        String sql = "update Friendship set status = ? where UserId = ? and FriendId = ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, friendship.getStatus());
-            preparedStatement.setInt(2, friendship.getFriendshipId());
+            preparedStatement.setString(1, status);
+            preparedStatement.setInt(2, userId);
+            preparedStatement.setInt(3, friendId);
             preparedStatement.execute();
         } catch (Exception e) {
             e.printStackTrace();
@@ -42,12 +43,13 @@ public class FriendshipDAO {
 //
 //    }
 
-    public List<Friendship> selectAllFriendshipByUser(User user) {
+    public List<Friendship> selectAllFriendshipsByUserId(int _userId) {
         List<Friendship> friendships = new ArrayList<>();
-        String sql = "select * from Friendship where UserId = ?";
+        String sql = "select * from Friendship where UserId = ? or FriendId = ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1, user.getUserId());
+            preparedStatement.setInt(1, _userId);
+            preparedStatement.setInt(2, _userId);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -63,14 +65,14 @@ public class FriendshipDAO {
         return friendships;
     }
 
-    public List<User> selectAllFriendsByUser(User user) {
+    public List<User> selectAllFriendsByUserAndStatus(User user, String status) {
         List<User> friends = new ArrayList<>();
         String sql = "select User.* from Friendship join User on Friendship.FriendId = User.UserId " +
                 "where Friendship.UserId = ? and Status = ?";
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, user.getUserId());
-            preparedStatement.setString(2, "Active");
+            preparedStatement.setString(2, status);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -89,5 +91,72 @@ public class FriendshipDAO {
             e.printStackTrace();
         }
         return friends;
+    }
+
+    public List<User> selectAllFriendRequestsByUser(User user) {
+        List<User> friendRequests = new ArrayList<>();
+        String sql = "select User.* from Friendship join User on Friendship.UserId = User.UserId " +
+                "where Friendship.FriendId = ? and Status = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, user.getUserId());
+            preparedStatement.setString(2, "Request");
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int userid = resultSet.getInt("UserId");
+                String firstName = resultSet.getString("FirstName");
+                String lastName = resultSet.getString("LastName");
+                Date birthday = DateService.convertDateSQLToDate(resultSet.getString("Birthday"));
+                String gender = resultSet.getString("Gender");
+                String email = resultSet.getString("Email");
+                String phoneNumber = resultSet.getString("PhoneNumber");
+                String address = resultSet.getString("Address");
+
+                friendRequests.add(new User(userid, firstName, lastName, birthday, gender, email, phoneNumber, address)) ;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return friendRequests;
+    }
+
+    public List<User> selectAllUsersNotInteracted(int userId) {
+        List<User> users = new ArrayList<>();
+        String sql = "select User.* from User left join Friendship on Friendship.UserId = User.UserId" +
+                "where Friendship.UserId <> ? and Friendship.FriendId <> ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(2, userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int userid = resultSet.getInt("UserId");
+                String firstName = resultSet.getString("FirstName");
+                String lastName = resultSet.getString("LastName");
+                Date birthday = DateService.convertDateSQLToDate(resultSet.getString("Birthday"));
+                String gender = resultSet.getString("Gender");
+                String email = resultSet.getString("Email");
+                String phoneNumber = resultSet.getString("PhoneNumber");
+                String address = resultSet.getString("Address");
+
+                users.add(new User(userid, firstName, lastName, birthday, gender, email, phoneNumber, address)) ;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
+
+    public void deleteFriendshipById(int userId, int friendId) {
+        String sql = "delete from Friendship where UserId = ? and FriendId = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setInt(2, friendId);
+            preparedStatement.execute();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

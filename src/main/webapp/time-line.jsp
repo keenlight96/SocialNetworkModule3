@@ -217,7 +217,7 @@
         <div class="top-area">
             <ul class="main-menu">
                 <li>
-                    <a href="#" title="">Home</a>
+                    <a href="/logout" title="">Home</a>
                     <ul>
                         <li><a href="index-2.html" title="">Home Social</a></li>
                         <li><a href="index2.html" title="">Home Social 2</a></li>
@@ -430,7 +430,7 @@
                     <a href="#" title=""><i class="ti-pencil-alt"></i>edit profile</a>
                     <a href="#" title=""><i class="ti-target"></i>activity log</a>
                     <a href="#" title=""><i class="ti-settings"></i>account setting</a>
-                    <a href="#" title=""><i class="ti-power-off"></i>log out</a>
+                    <a href="/logout" title=""><i class="ti-power-off"></i>log out</a>
                 </div>
             </div>
             <span class="ti-menu main-menu" data-ripple=""></span>
