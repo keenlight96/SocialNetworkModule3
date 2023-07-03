@@ -1,4 +1,5 @@
 package com.example.socialnetwork.service;
 
-public class Template {
+public class PostService {
+
 }
