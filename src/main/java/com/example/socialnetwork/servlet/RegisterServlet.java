@@ -62,6 +62,8 @@ public class RegisterServlet extends HttpServlet {
             req.setAttribute("gender",gender);
             req.setAttribute("phoneNumber",phoneNumber);
             req.setAttribute("address",address);
+            req.setAttribute("usernameExist", !registerService.isValidUsername(username));
+
             RequestDispatcher dispatcher = req.getRequestDispatcher("/login-register/register.jsp");
             dispatcher.forward(req, resp);
         }
