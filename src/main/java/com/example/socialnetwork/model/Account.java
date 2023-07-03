@@ -68,15 +68,5 @@ public class Account {
         this.status = status;
     }
 
-    @Override
-    public String toString() {
-        return "Account{" +
-                "userId=" + userId +
-                ", email='" + email + '\'' +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
-                ", status='" + status + '\'' +
-                '}';
-    }
 }
+
