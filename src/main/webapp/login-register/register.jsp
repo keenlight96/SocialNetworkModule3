@@ -35,7 +35,11 @@
                         <div class="mb-md-1 mt-md-1 pb-2">
                             <form action="/register" method="post">
                                 <h2 class="fw-bold mb-1 text-uppercase">Register</h2>
-                                <p class="text-white-40 mb-2">Please fill all fields!</p>
+                                <% if (request.getAttribute("usernameExist") != null && (boolean) request.getAttribute("usernameExist")) { %>
+                                <div class="alert alert-danger" role="alert">
+                                    Tên đăng nhập đã tồn tại. Vui lòng chọn tên đăng nhập khác.
+                                </div>
+                                <% } %>
                                 <div class="form-outline form-white mb-4">
                                     <label for="typeUsernameX"></label><input name="username" type="text"
                                                                               id="typeUsernameX"
@@ -184,7 +188,6 @@
                                                                        class="text-white-50 fw-bold">Login</a>
                             </p>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -210,3 +213,4 @@
     })()
 </script>
 </html>
+

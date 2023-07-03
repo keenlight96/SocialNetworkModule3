@@ -34,6 +34,7 @@ public class LoginServlet extends HttpServlet {
             RequestDispatcher dispatcher = req.getRequestDispatcher("/time-line");
             dispatcher.forward(req, resp);
         } else {
+            req.setAttribute("error", "Sai tên tài khoản hoặc mật khẩu");
             RequestDispatcher dispatcher = req.getRequestDispatcher("/login-register/login.jsp");
             dispatcher.forward(req, resp);
         }
