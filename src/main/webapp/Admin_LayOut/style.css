@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');*/
 
 * {
 	margin: 0;
@@ -488,7 +488,7 @@ body {
 
 #content main .table-data .todo {
 	flex-grow: 1;
-	flex-basis: 300px;
+	/*flex-basis: 300px;*/
 }
 #content main .table-data .todo .todo-list {
 	width: 100%;

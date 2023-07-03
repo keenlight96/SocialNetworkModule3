@@ -7,6 +7,8 @@ import com.example.socialnetwork.service.DateService;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AccountDAO {
     Connection connection = ConnectMySQL.getConnection();
@@ -47,6 +49,19 @@ public class AccountDAO {
             e.printStackTrace();
             return null;
         }
+    }
+    public String selectRole(String role){
+        String sql = "select role from account where role = ?";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1,role);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (!resultSet.next()){
+                return null;
+            }else return resultSet.getString(role);
+        }catch (Exception e){
+        }
+        return null;
     }
 
     public void insertAccountAndUser(Account account, User user) {
@@ -92,10 +107,35 @@ public class AccountDAO {
                 e2.printStackTrace();
             }
         }
-
-
     }
+    public List<Account> selectAllAccount() {
+        List<Account> account = new ArrayList<>();
+        String sql = "SELECT * FROM account;";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                account.add(new Account(resultSet.getInt(1),resultSet.getString(2),resultSet.getString(3),
+                        resultSet.getString(4),resultSet.getString(5),resultSet.getString(6)));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return account;
+    }
+    public void deleteAcc(String email){
+        String sql = "delete from account where Email = ?";
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1,email);
+            preparedStatement.executeUpdate();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
 }
+
 
 
 

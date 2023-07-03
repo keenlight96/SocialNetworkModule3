@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/adminEditNV")
+@WebServlet("/AdminEdit")
 public class AdminEditServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,7 +32,7 @@ public class AdminEditServlet extends HttpServlet {
 //            account.setImg(img);
 //            account.setName(name);
         }
-        resp.sendRedirect("/index.jsp");
+        resp.sendRedirect("/admin");
     }
 
 
