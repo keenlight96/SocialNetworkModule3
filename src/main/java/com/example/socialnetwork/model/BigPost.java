@@ -5,26 +5,26 @@ import java.util.List;
 
 public class BigPost {
     private int postId;
-    private int userId;
+    private User user;
     private String content;
     private Date postDate;
     private List<Photo> photos;
     private List<Like> likes;
     private boolean isLiked;
-    private List<Comment> comments;
+    private List<BigComment> bigComments;
 
     public BigPost() {
     }
 
-    public BigPost(int postId, int userId, String content, Date postDate, List<Photo> photos, List<Like> likes, boolean isLiked, List<Comment> comments) {
+    public BigPost(int postId, User user, String content, Date postDate, List<Photo> photos, List<Like> likes, boolean isLiked, List<BigComment> bigComments) {
         this.postId = postId;
-        this.userId = userId;
+        this.user = user;
         this.content = content;
         this.postDate = postDate;
         this.photos = photos;
         this.likes = likes;
         this.isLiked = isLiked;
-        this.comments = comments;
+        this.bigComments = bigComments;
     }
 
     public int getPostId() {
@@ -35,12 +35,12 @@ public class BigPost {
         this.postId = postId;
     }
 
-    public int getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getContent() {
@@ -83,11 +83,11 @@ public class BigPost {
         isLiked = liked;
     }
 
-    public List<Comment> getComments() {
-        return comments;
+    public List<BigComment> getBigComments() {
+        return bigComments;
     }
 
-    public void setComments(List<Comment> comments) {
-        this.comments = comments;
+    public void setBigComments(List<BigComment> bigComments) {
+        this.bigComments = bigComments;
     }
 }
