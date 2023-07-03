@@ -35,7 +35,9 @@
         </div>
         <div class="mh-head second">
             <form class="mh-form">
-                <input placeholder="search"/>
+                <label>
+                    <input placeholder="search"/>
+                </label>
                 <a href="#/" class="fa fa-search"></a>
             </form>
         </div>
@@ -259,7 +261,7 @@
                 <li>
                     <a href="#" title="">more pages</a>
                     <ul>
-                        <li><a href="404.html" title="">404 error page</a></li>
+                        <li><a href="/admin" title="">AdminHub</a></li>
                         <li><a href="about.html" title="">about</a></li>
                         <li><a href="contact.html" title="">contact</a></li>
                         <li><a href="faq.html" title="">faq's page</a></li>
