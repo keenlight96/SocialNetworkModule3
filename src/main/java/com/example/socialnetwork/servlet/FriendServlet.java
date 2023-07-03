@@ -24,11 +24,19 @@ public class FriendServlet extends HttpServlet {
         int userId = Integer.parseInt(req.getParameter("userId"));
 
         switch (action) {
-            case "add":
+            case "sendRequest":
                 Friendship friendship = new Friendship(0, currentAccount.getUserId(), userId, "Request");
                 friendsService.sendRequest(friendship);
                 break;
+            case "deleteRequest":
+            case "deleteFriend":
+                friendsService.deleteFriendship(currentAccount.getUserId(), userId);
+                break;
+            case "confirmRequest":
+                friendsService.confirmFriendship(currentAccount.getUserId(), userId);
+                break;
         }
 
+        resp.sendRedirect("/timeline-friends");
     }
 }

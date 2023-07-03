@@ -27,14 +27,20 @@ public class TimelineFriendsServlet extends HttpServlet {
 
         req.setAttribute("user", currentProfile);
 
-        List<User> friends = friendsService.getAllFriendByUser(currentProfile);
+        List<User> friends = friendsService.getAllFriendsByUser(currentProfile);
         req.setAttribute("friends", friends);
+        List<User> friendRequests = friendsService.getAllFriendRequestsByUser(currentProfile);
+        req.setAttribute("friendRequests", friendRequests);
+        List<User> requestsSent = friendsService.getAllRequestsSentByUser(currentProfile);
+        req.setAttribute("requestsSent", requestsSent);
 
         req.setAttribute("navFriends","active");
         req.setAttribute("navFriendsReq","");
+        req.setAttribute("navReqsSent","");
         req.setAttribute("navFriendsSearch","");
         req.setAttribute("tabFriends","active fade show");
         req.setAttribute("tabFriendsReq","fade");
+        req.setAttribute("tabReqsSent","fade");
         req.setAttribute("tabFriendsSearch","fade");
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/timeline-friends.jsp");

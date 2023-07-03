@@ -11,6 +11,9 @@ public class User {
     private String email;
     private String phoneNumber;
     private String address;
+    private String avatarSource; // avatar img
+    private String bgSource; // background img
+    private String extraField1 = "Not";
 
     public User() {
     }
@@ -88,6 +91,30 @@ public class User {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getAvatarSource() {
+        return avatarSource;
+    }
+
+    public void setAvatarSource(String avatarSource) {
+        this.avatarSource = avatarSource;
+    }
+
+    public String getBgSource() {
+        return bgSource;
+    }
+
+    public void setBgSource(String bgSource) {
+        this.bgSource = bgSource;
+    }
+
+    public String getExtraField1() {
+        return extraField1;
+    }
+
+    public void setExtraField1(String extraField1) {
+        this.extraField1 = extraField1;
     }
 
     @Override

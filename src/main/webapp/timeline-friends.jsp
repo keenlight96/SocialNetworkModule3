@@ -216,7 +216,7 @@
         <div class="top-area">
             <ul class="main-menu">
                 <li>
-                    <a href="#" title="">Home</a>
+                    <a href="/logout" title="">Home</a>
                     <ul>
                         <li><a href="index-2.html" title="">Home Social</a></li>
                         <li><a href="index2.html" title="">Home Social 2</a></li>
@@ -429,7 +429,7 @@
                     <a href="#" title=""><i class="ti-pencil-alt"></i>edit profile</a>
                     <a href="#" title=""><i class="ti-target"></i>activity log</a>
                     <a href="#" title=""><i class="ti-settings"></i>account setting</a>
-                    <a href="#" title=""><i class="ti-power-off"></i>log out</a>
+                    <a href="/logout" title=""><i class="ti-power-off"></i>log out</a>
                 </div>
             </div>
             <span class="ti-menu main-menu" data-ripple=""></span>
@@ -575,13 +575,16 @@
                                         <ul class="nav nav-tabs">
                                             <li class="nav-item"><a class="${navFriends}" href="#frends"
                                                                     data-toggle="tab">My
-                                                Friends</a> <span>55</span></li>
+                                                Friends</a></li>
                                             <li class="nav-item"><a class="${navFriendsReq}" href="#frends-req"
                                                                     data-toggle="tab">Friend
-                                                Requests</a><span>60</span></li>
+                                                Requests</a></li>
+                                            <li class="nav-item"><a class="${navReqsSent}" href="#frends-reqs-sent"
+                                                                    data-toggle="tab">Requests
+                                                Sent</a></li>
                                             <li class="nav-item"><a class="${navFriendsSearch}" href="#frends-search"
                                                                     data-toggle="tab">Search
-                                                Friends</a><span>60</span></li>
+                                                Friends</a></li>
                                         </ul>
 
                                         <!-- Tab panes -->
@@ -593,35 +596,18 @@
                                                             <div class="nearly-pepls">
                                                                 <figure>
                                                                     <img src="images/resources/friend-avatar9.jpg"
-                                                                            alt="">
+                                                                         alt="">
                                                                 </figure>
                                                                 <div class="pepl-info">
-                                                                    <h4><a href="/time-line?userId=${friend.userId}" title="">${friend.firstName} ${friend.lastName}</a>
+                                                                    <h4><a href="/time-line?userId=${friend.userId}"
+                                                                           title="">${friend.firstName} ${friend.lastName}</a>
                                                                     </h4>
-                                                                    <a href="#" title="" class="add-butn more-action"
+                                                                    <a href="/friends?action=deleteFriend&userId=${friend.userId}" title="" class="add-butn more-action"
                                                                        data-ripple="">unfriend</a>
                                                                 </div>
                                                             </div>
                                                         </li>
                                                     </c:forEach>
-                                                    <li>
-                                                        <div class="nearly-pepls">
-                                                            <figure>
-                                                                <a href="time-line.html" title=""><img
-                                                                        src="images/resources/nearly1.jpg" alt=""></a>
-                                                            </figure>
-                                                            <div class="pepl-info">
-                                                                <h4><a href="time-line.html" title="">sophia Gate</a>
-                                                                </h4>
-                                                                <span>tv actresses</span>
-                                                                <a href="#" title="" class="add-butn more-action"
-                                                                   data-ripple="">unfriend</a>
-                                                                <a href="#" title="" class="add-butn" data-ripple="">add
-                                                                    friend</a>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-
                                                 </ul>
                                                 <div class="lodmore">
                                                     <button class="btn-view btn-load-more"></button>
@@ -629,134 +615,45 @@
                                             </div>
                                             <div class="tab-pane ${tabFriendsReq}" id="frends-req">
                                                 <ul class="nearby-contct">
-                                                    <li>
-                                                        <div class="nearly-pepls">
-                                                            <figure>
-                                                                <a href="time-line.html" title=""><img
-                                                                        src="images/resources/nearly5.jpg" alt=""></a>
-                                                            </figure>
-                                                            <div class="pepl-info">
-                                                                <h4><a href="time-line.html" title="">Amy watson</a>
-                                                                </h4>
-                                                                <span>ftv model</span>
-                                                                <a href="#" title="" class="add-butn more-action"
-                                                                   data-ripple="">delete Request</a>
-                                                                <a href="#" title="" class="add-butn" data-ripple="">Confirm</a>
+                                                    <c:forEach var="request" items="${friendRequests}">
+                                                        <li>
+                                                            <div class="nearly-pepls">
+                                                                <figure>
+                                                                    <img src="images/resources/nearly5.jpg"
+                                                                            alt="">
+                                                                </figure>
+                                                                <div class="pepl-info">
+                                                                    <h4><a href="${request.userId}" title="">${request.firstName} ${request.lastName}</a>
+                                                                    </h4>
+                                                                    <a href="/friends?action=deleteRequest&userId=${request.userId}" title="" class="add-butn more-action"
+                                                                       data-ripple="">delete Request</a>
+                                                                    <a href="/friends?action=confirmRequest&userId=${request.userId}" title="" class="add-butn"
+                                                                       data-ripple="">Confirm</a>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </li>
-
-                                                    <li>
-                                                        <div class="nearly-pepls">
-                                                            <figure>
-                                                                <a href="time-line.html" title=""><img
-                                                                        src="images/resources/nearly1.jpg" alt=""></a>
-                                                            </figure>
-                                                            <div class="pepl-info">
-                                                                <h4><a href="time-line.html" title="">sophia Gate</a>
-                                                                </h4>
-                                                                <span>ftv model</span>
-                                                                <a href="#" title="" class="add-butn more-action"
-                                                                   data-ripple="">delete Request</a>
-                                                                <a href="#" title="" class="add-butn" data-ripple="">Confirm</a>
+                                                        </li>
+                                                    </c:forEach>
+                                                </ul>
+                                                <button class="btn-view btn-load-more"></button>
+                                            </div>
+                                            <div class="tab-pane ${tabReqsSent}" id="frends-reqs-sent">
+                                                <ul class="nearby-contct">
+                                                    <c:forEach var="request" items="${requestsSent}">
+                                                        <li>
+                                                            <div class="nearly-pepls">
+                                                                <figure>
+                                                                    <img src="images/resources/nearly5.jpg"
+                                                                         alt="">
+                                                                </figure>
+                                                                <div class="pepl-info">
+                                                                    <h4><a href="${request.userId}" title="">${request.firstName} ${request.lastName}</a>
+                                                                    </h4>
+                                                                    <a href="/friends?action=deleteRequest&userId=${request.userId}" title="" class="add-butn more-action"
+                                                                       data-ripple="">delete Request</a>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="nearly-pepls">
-                                                            <figure>
-                                                                <a href="time-line.html" title=""><img
-                                                                        src="images/resources/nearly6.jpg" alt=""></a>
-                                                            </figure>
-                                                            <div class="pepl-info">
-                                                                <h4><a href="time-line.html" title="">caty lasbo</a>
-                                                                </h4>
-                                                                <span>ftv model</span>
-                                                                <a href="#" title="" class="add-butn more-action"
-                                                                   data-ripple="">delete Request</a>
-                                                                <a href="#" title="" class="add-butn" data-ripple="">Confirm</a>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="nearly-pepls">
-                                                            <figure>
-                                                                <a href="time-line.html" title=""><img
-                                                                        src="images/resources/friend-avatar9.jpg"
-                                                                        alt=""></a>
-                                                            </figure>
-                                                            <div class="pepl-info">
-                                                                <h4><a href="time-line.html" title="">jhon kates</a>
-                                                                </h4>
-                                                                <span>ftv model</span>
-                                                                <a href="#" title="" class="add-butn more-action"
-                                                                   data-ripple="">delete Request</a>
-                                                                <a href="#" title="" class="add-butn" data-ripple="">Confirm</a>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="nearly-pepls">
-                                                            <figure>
-                                                                <a href="time-line.html" title=""><img
-                                                                        src="images/resources/nearly2.jpg" alt=""></a>
-                                                            </figure>
-                                                            <div class="pepl-info">
-                                                                <h4><a href="time-line.html" title="">sara grey</a></h4>
-                                                                <span>ftv model</span>
-                                                                <a href="#" title="" class="add-butn more-action"
-                                                                   data-ripple="">delete Request</a>
-                                                                <a href="#" title="" class="add-butn" data-ripple="">Confirm</a>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="nearly-pepls">
-                                                            <figure>
-                                                                <a href="time-line.html" title=""><img
-                                                                        src="images/resources/nearly4.jpg" alt=""></a>
-                                                            </figure>
-                                                            <div class="pepl-info">
-                                                                <h4><a href="time-line.html" title="">Sara grey</a></h4>
-                                                                <span>ftv model</span>
-                                                                <a href="#" title="" class="add-butn more-action"
-                                                                   data-ripple="">delete Request</a>
-                                                                <a href="#" title="" class="add-butn" data-ripple="">Confirm</a>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="nearly-pepls">
-                                                            <figure>
-                                                                <a href="time-line.html" title=""><img
-                                                                        src="images/resources/nearly3.jpg" alt=""></a>
-                                                            </figure>
-                                                            <div class="pepl-info">
-                                                                <h4><a href="time-line.html" title="">Sexy cat</a></h4>
-                                                                <span>ftv model</span>
-                                                                <a href="#" title="" class="add-butn more-action"
-                                                                   data-ripple="">delete Request</a>
-                                                                <a href="#" title="" class="add-butn" data-ripple="">Confirm</a>
-                                                            </div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="nearly-pepls">
-                                                            <figure>
-                                                                <a href="time-line.html" title=""><img
-                                                                        src="images/resources/friend-avatar9.jpg"
-                                                                        alt=""></a>
-                                                            </figure>
-                                                            <div class="pepl-info">
-                                                                <h4><a href="time-line.html" title="">jhon kates</a>
-                                                                </h4>
-                                                                <span>ftv model</span>
-                                                                <a href="#" title="" class="add-butn more-action"
-                                                                   data-ripple="">delete Request</a>
-                                                                <a href="#" title="" class="add-butn" data-ripple="">Confirm</a>
-                                                            </div>
-                                                        </div>
-                                                    </li>
+                                                        </li>
+                                                    </c:forEach>
                                                 </ul>
                                                 <button class="btn-view btn-load-more"></button>
                                             </div>
@@ -784,40 +681,32 @@
                                                                     <h4><a href="/time-line?userId=${result.userId}"
                                                                            title="">${result.firstName} ${result.lastName}</a>
                                                                     </h4>
-                                                                    <span></span>
-                                                                        <%--                                                                    <form class="add-butn" action="/addFriend"--%>
-                                                                        <%--                                                                          method="post">--%>
-                                                                        <%--                                                                        <input type="text" hidden="hidden"--%>
-                                                                        <%--                                                                               value="${result.userId}">--%>
-                                                                        <%--                                                                        <button title="" class="add-butn"--%>
-                                                                        <%--                                                                                data-ripple="">Add Friend--%>
-                                                                        <%--                                                                        </button>--%>
-                                                                        <%--                                                                    </form>--%>
-                                                                    <a href="/friends?action=add&userId=${result.userId}"
-                                                                       title="" class="add-butn" data-ripple="">Add
-                                                                        Friend</a>
+                                                                    <c:choose>
+                                                                        <c:when test="${result.extraField1 == 'Active'}">
+                                                                            <a href="/friends?action=deleteFriend&userId=${result.userId}" title="" class="add-butn more-action"
+                                                                               data-ripple="">unfriend</a>
+                                                                        </c:when>
+                                                                        <c:when test="${result.extraField1 == 'GetRequest'}">
+                                                                            <a href="/friends?action=deleteRequest&userId=${result.userId}" title="" class="add-butn more-action"
+                                                                               data-ripple="">delete Request</a>
+                                                                            <a href="/friends?action=confirmRequest&userId=${result.userId}" title="" class="add-butn"
+                                                                               data-ripple="">Confirm</a>
+                                                                        </c:when>
+                                                                        <c:when test="${result.extraField1 == 'ToRequest'}">
+                                                                            <a href="/friends?action=deleteRequest&userId=${result.userId}" title="" class="add-butn more-action"
+                                                                               data-ripple="">delete Request</a>
+                                                                        </c:when>
+                                                                        <c:when test="${result.extraField1 == 'Not'}">
+                                                                            <a href="/friends?action=sendRequest&userId=${result.userId}"
+                                                                               title="" class="add-butn" data-ripple="">Add
+                                                                                Friend</a>
+                                                                        </c:when>
+                                                                    </c:choose>
                                                                 </div>
                                                             </div>
                                                         </li>
                                                     </c:forEach>
 
-                                                    <li>
-                                                        <div class="nearly-pepls">
-                                                            <figure>
-                                                                <a href="time-line.html" title=""><img
-                                                                        src="images/resources/friend-avatar9.jpg"
-                                                                        alt=""></a>
-                                                            </figure>
-                                                            <div class="pepl-info">
-                                                                <h4><a href="time-line.html" title="">jhon kates</a>
-                                                                </h4>
-                                                                <span>ftv model</span>
-                                                                <a href="#" title="" class="add-butn more-action"
-                                                                   data-ripple="">delete Request</a>
-                                                                <a href="#" title="" class="add-butn" data-ripple="">Confirm</a>
-                                                            </div>
-                                                        </div>
-                                                    </li>
                                                 </ul>
                                                 <button class="btn-view btn-load-more"></button>
                                             </div>
