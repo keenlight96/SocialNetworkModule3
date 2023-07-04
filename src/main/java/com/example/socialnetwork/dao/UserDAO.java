@@ -6,12 +6,14 @@ import com.example.socialnetwork.service.DateService;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class UserDAO {
     Connection connection = ConnectMySQL.getConnection();
+
     public User selectUserByUsername(String username) {
         String sql = "select User.* from Account join User on User.userid = Account.userid where username = ?";
         try {
@@ -82,6 +84,27 @@ public class UserDAO {
             e.printStackTrace();
         }
         return users;
+    }
+
+    public boolean updateUser(User user) {
+        try  {
+            String sql = "UPDATE User SET FirstName = ?, LastName = ?, Birthday = ?, Gender = ?, Email = ?, PhoneNumber = ?, Address = ? WHERE UserID = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, user.getFirstName());
+            statement.setString(2, user.getLastName());
+            statement.setString(3, DateService.convertDateToDateSQL(user.getBirthday()));
+            statement.setString(4, user.getGender());
+            statement.setString(5, user.getEmail());
+            statement.setString(6, user.getPhoneNumber());
+            statement.setString(7, user.getAddress());
+            statement.setInt(8, user.getUserId());
+
+            int rowsUpdated = statement.executeUpdate();
+            return rowsUpdated > 0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
     }
 
 

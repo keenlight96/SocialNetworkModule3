@@ -228,7 +228,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#" title="">timeline</a>
+                    <a href="/detailUpdate" title="">timeline</a>
                     <ul>
                         <li><a href="time-line.html" title="">timeline</a></li>
                         <li><a href="timeline-friends.jsp" title="">timeline friends</a></li>
