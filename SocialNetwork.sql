@@ -77,7 +77,9 @@ CREATE TABLE Share (
                        FOREIGN KEY (UserID) REFERENCES User(UserID)
 );
 
-
+alter table Post add column ShareID int;
+alter table Share add column ShareID int Primary Key;
+alter table Share add column PostSourceID int;
 
 
 

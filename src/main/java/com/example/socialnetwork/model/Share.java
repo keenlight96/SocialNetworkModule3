@@ -3,17 +3,25 @@ package com.example.socialnetwork.model;
 import java.util.Date;
 
 public class Share {
+    private int shareId;
     private int postId;
-    private int userId;
-    private Date shareDate;
+    private int postSourceId;
 
     public Share() {
     }
 
-    public Share(int postId, int userId, Date shareDate) {
+    public Share(int shareId, int postId, int postSourceId) {
+        this.shareId = shareId;
         this.postId = postId;
-        this.userId = userId;
-        this.shareDate = shareDate;
+        this.postSourceId = postSourceId;
+    }
+
+    public int getShareId() {
+        return shareId;
+    }
+
+    public void setShareId(int shareId) {
+        this.shareId = shareId;
     }
 
     public int getPostId() {
@@ -24,19 +32,11 @@ public class Share {
         this.postId = postId;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getPostSourceId() {
+        return postSourceId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public Date getShareDate() {
-        return shareDate;
-    }
-
-    public void setShareDate(Date shareDate) {
-        this.shareDate = shareDate;
+    public void setPostSourceId(int postSourceId) {
+        this.postSourceId = postSourceId;
     }
 }

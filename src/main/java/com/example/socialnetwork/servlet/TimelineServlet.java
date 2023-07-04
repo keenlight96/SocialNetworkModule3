@@ -1,10 +1,13 @@
 package com.example.socialnetwork.servlet;
 
+import com.example.socialnetwork.dao.PostDAO;
 import com.example.socialnetwork.dao.UserDAO;
 import com.example.socialnetwork.model.Account;
 import com.example.socialnetwork.model.BigPost;
+import com.example.socialnetwork.model.Post;
 import com.example.socialnetwork.model.User;
 import com.example.socialnetwork.service.BigPostService;
+import com.example.socialnetwork.service.FriendsService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,6 +22,8 @@ import java.util.List;
 @WebServlet("/time-line")
 public class TimelineServlet extends HttpServlet {
     UserDAO userDAO = new UserDAO();
+    PostDAO postDAO = new PostDAO();
+    FriendsService friendsService = new FriendsService();
     BigPostService bigPostService = new BigPostService();
 
     @Override
@@ -43,8 +48,17 @@ public class TimelineServlet extends HttpServlet {
         session.setAttribute("currentProfile", user);
         req.setAttribute("user", user);
 
+        // get stuff info
+        List<User> friends = friendsService.getAllFriendsByUser(user);
+        req.setAttribute("friends", friends);
+
         // get post information (post, photos, likes, comments)
         List<BigPost> bigPosts = bigPostService.getAllBigPostsByUser(user);
+        for (BigPost e :
+                bigPosts) {
+            Post post = postDAO.selectPostByPostId(e.getPostId());
+            e.setLiked(bigPostService.isLiked(post, currentAccount));
+        }
         req.setAttribute("bigPosts", bigPosts);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/time-line.jsp");

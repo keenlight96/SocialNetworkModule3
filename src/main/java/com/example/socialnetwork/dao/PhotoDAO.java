@@ -44,4 +44,24 @@ public class PhotoDAO {
         }
         return photos;
     }
+
+    public Photo selectFirstPhotosByPost(Post post) {
+        String sql = "select * from Photo where PostId = ? ";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, post.getPostId());
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int photoId = resultSet.getInt("PhotoId");
+                int postId = resultSet.getInt("PostId");
+                String photoSource = resultSet.getString("PhotoSource");
+
+                return new Photo(photoId, postId, photoSource);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

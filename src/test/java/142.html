@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="css/responsive.css">
 
     <style>
+        .modal {
+        }
         .icon-button {
             border: none;
             background: none;
@@ -32,7 +34,39 @@
 <body>
 <!--<div class="se-pre-con"></div>-->
 <div class="theme-layout">
+    <div class="container">
+        <h2>Modal Example</h2>
+        <!-- Button to Open the Modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            Open modal
+        </button>
 
+        <!-- The Modal -->
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Modal Heading</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        Modal body..
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
     <div class="responsive-header">
         <div class="mh-head first Sticky">
 			<span class="mh-btns-left">
@@ -613,38 +647,6 @@
                                                         ${bigPost.content}
                                                     </p>
                                                 </div>
-                                                <c:if test="${bigPost.sharedPost != null}">
-                                                    <div class="central-meta item">
-                                                        <div class="user-post">
-                                                            <div class="friend-info">
-                                                                <figure>
-                                                                    <img src="images/resources/friend-avatar10.jpg"
-                                                                         alt="">
-                                                                </figure>
-                                                                <div class="friend-name">
-                                                                    <ins>
-                                                                        <a href="/time-line?userId=${bigPost.sharedPostUser.userId}"
-                                                                           title="">
-                                                                                ${bigPost.sharedPostUser.firstName} ${bigPost.sharedPostUser.lastName}
-                                                                        </a></ins>
-                                                                    <span>${bigPost.sharedPost.postDate}</span>
-                                                                    <form action="/postDetail" method="get">
-                                                                        <input name="postId" type="text" hidden="hidden"
-                                                                               value="${bigPost.sharedPost.postId}">
-                                                                        <button type="submit" style="background: #088dcd">To Post
-                                                                        </button>
-                                                                    </form>
-                                                                </div>
-                                                                <div class="description">
-                                                                    <p>${bigPost.sharedPostShortContent}</p>
-                                                                </div>
-                                                                <c:if test="${bigPost.sharedPostPhoto != null}">
-                                                                    <img src="${bigPost.sharedPostPhoto}" alt="">
-                                                                </c:if>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </c:if>
                                                 <c:forEach var="photo" items="${bigPost.photos}">
                                                     <img src="${photo.photoSource}" alt="">
                                                 </c:forEach>
@@ -659,54 +661,76 @@
                                                         </li>
                                                         <li>
                                                             <c:choose>
-                                                            <c:when test="${bigPost.isLiked()}">
-                                                                <form action="/like" method="get">
-                                                                    <input hidden="hidden" name="postId" value="${bigPost.postId}">
-                                                                    <input hidden="hidden" name="action" value="toDislike">
-                                                                    <button type="submit" class="icon-button" data-toggle="tooltip"
-                                                                            title="dislike">
+                                                                <c:when test="${bigPost.isLiked()}">
+                                                                    <form action="/like" method="get">
+                                                                        <input hidden="hidden" name="postId" value="${bigPost.postId}">
+                                                                        <input hidden="hidden" name="action" value="toDislike">
+                                                                        <button type="submit" class="icon-button" data-toggle="tooltip"
+                                                                                title="dislike">
                                                                         <span class="like" >
                                                                               <i class="ti-heart"></i>
                                                                 </c:when>
                                                                 <c:otherwise>
-                                                                <form action="/like" method="get">
-                                                                    <input hidden="hidden" name="postId" value="${bigPost.postId}">
-                                                                    <input hidden="hidden" name="action" value="toLike">
-                                                                <button type="submit" class="icon-button" data-toggle="tooltip"
-                                                                        title="like">
+                                                                    <form action="/like" method="get">
+                                                                        <input hidden="hidden" name="postId" value="${bigPost.postId}">
+                                                                        <input hidden="hidden" name="action" value="toLike">
+                                                                        <button type="submit" class="icon-button" data-toggle="tooltip"
+                                                                                title="like">
                                                                         <span class="dislike" >
                                                                               <i class="ti-heart-broken"></i>
                                                                 </c:otherwise>
                                                             </c:choose>
                                                             <ins>${bigPost.getLikes().size()}</ins></span></button>
-                                                                </form>
+                                                            </form>
                                                         </li>
                                                         <li class="social-media">
-                                                            <!-- Button trigger modal -->
-                                                            <button type="button" class="fa fa-share-alt" style="border: none; outline: none; background-color: transparent;" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                            </button>
-
-                                                            <!-- Modal -->
-                                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                <div class="modal-dialog">
-                                                                    <div class="modal-content">
-                                                                        <form action="/share" method="post">
-                                                                            <div class="modal-header">
-                                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Share the post</h1>
-                                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                            </div>
-                                                                            <div class="modal-body">
-                                                                                <textarea rows="2" placeholder="write something"
-                                                                                          name="post-content"></textarea>
-                                                                                <input type="text" hidden="hidden" name="postSourceId" value="${bigPost.postId}">
-                                                                            </div>
-                                                                            <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                                                <button type="submit" class="btn btn-primary">Share</button>
-                                                                            </div>
-                                                                        </form>
+                                                            <div class="menu">
+                                                                <div class="btn trigger"><i
+                                                                        class="fa fa-share-alt"></i></div>
+                                                                <div class="rotater">
+                                                                    <div class="btn btn-icon"><a href="#"
+                                                                                                 title=""><i
+                                                                            class="fa fa-html5"></i></a></div>
+                                                                </div>
+                                                                <div class="rotater">
+                                                                    <div class="btn btn-icon"><a href="#"
+                                                                                                 title=""><i
+                                                                            class="fa fa-facebook"></i></a></div>
+                                                                </div>
+                                                                <div class="rotater">
+                                                                    <div class="btn btn-icon"><a href="#"
+                                                                                                 title=""><i
+                                                                            class="fa fa-google-plus"></i></a></div>
+                                                                </div>
+                                                                <div class="rotater">
+                                                                    <div class="btn btn-icon"><a href="#"
+                                                                                                 title=""><i
+                                                                            class="fa fa-twitter"></i></a></div>
+                                                                </div>
+                                                                <div class="rotater">
+                                                                    <div class="btn btn-icon"><a href="#"
+                                                                                                 title=""><i
+                                                                            class="fa fa-css3"></i></a></div>
+                                                                </div>
+                                                                <div class="rotater">
+                                                                    <div class="btn btn-icon"><a href="#"
+                                                                                                 title=""><i
+                                                                            class="fa fa-instagram"></i></a>
                                                                     </div>
                                                                 </div>
+                                                                <div class="rotater">
+                                                                    <div class="btn btn-icon"><a href="#"
+                                                                                                 title=""><i
+                                                                            class="fa fa-dribbble"></i></a>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="rotater">
+                                                                    <div class="btn btn-icon"><a href="#"
+                                                                                                 title=""><i
+                                                                            class="fa fa-pinterest"></i></a>
+                                                                    </div>
+                                                                </div>
+
                                                             </div>
                                                         </li>
                                                     </ul>
@@ -724,13 +748,15 @@
                                                         <div class="we-comment">
                                                             <div class="coment-head">
                                                                 <h5><a href="/time-line?userId=${comment.user.userId}" title="">
-                                                                        ${comment.user.firstName} ${comment.user.lastName}
+                                                                    ${comment.user.firstName} ${comment.user.lastName}
                                                                 </a>
                                                                 </h5>
                                                                 <span>${comment.commentDate}</span>
+                                                                <a class="we-reply" href="#" title="Reply"><i
+                                                                        class="fa fa-reply"></i></a>
                                                             </div>
                                                             <p>
-                                                                    ${comment.content}
+                                                                ${comment.content}
                                                             </p>
                                                         </div>
                                                     </li>
