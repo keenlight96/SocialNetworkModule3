@@ -217,7 +217,7 @@
         <div class="top-area">
             <ul class="main-menu">
                 <li>
-                    <a href="/logout" title="">Home</a>
+                    <a href="" title="">Home</a>
                     <ul>
                         <li><a href="index-2.html" title="">Home Social</a></li>
                         <li><a href="index2.html" title="">Home Social 2</a></li>
@@ -228,7 +228,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="/detailUpdate" title="">timeline</a>
+                    <a href="" title="">timeline</a>
                     <ul>
                         <li><a href="time-line.html" title="">timeline</a></li>
                         <li><a href="timeline-friends.jsp" title="">timeline friends</a></li>
@@ -556,15 +556,15 @@
                                             </li>
                                             <li>
                                                 <i class="ti-share"></i>
-                                                <a href="people-nearby.html" title="">People Nearby</a>
+                                                <a href="edit-password.jsp" title="">Update Password</a>
                                             </li>
                                             <li>
                                                 <i class="fa fa-bar-chart-o"></i>
-                                                <a href="insights.html" title="">insights</a>
+                                                <a href="/detailUpdate" title="">Edit Profile</a>
                                             </li>
                                             <li>
                                                 <i class="ti-power-off"></i>
-                                                <a href="landing.html" title="">Logout</a>
+                                                <a href="/logout" title="">Logout</a>
                                             </li>
                                         </ul>
                                     </div><!-- Shortcuts -->

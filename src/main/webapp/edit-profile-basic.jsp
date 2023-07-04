@@ -561,7 +561,7 @@
 											  <label class="control-label" for="input">First Name</label><i class="mtrl-select"></i>
 											</div>
 											<div class="form-group half">	
-											  <input type="text" name="lastname" value="${user.lastName}" required="required"/>
+											  <input type="text" name="lastName" value="${user.lastName}" required="required"/>
 											  <label class="control-label" for="input">Last Name</label><i class="mtrl-select"></i>
 											</div>
 											<div class="form-group">
@@ -574,6 +574,7 @@
 											  <label class="control-label" for="input">Phone No.</label><i class="mtrl-select"></i>
 											</div>
 											<div class="dob">
+
 												<div class="form-group">
 													<select name="dayOfBirth">
 
@@ -665,21 +666,10 @@
 												<button type="button" class="mtr-btn"><span>Cancel</span></button>
 												<button type="submit" class="mtr-btn"><span>Update</span></button>
 
+
 											</div>
-											<h1>Edit Password</h1>
 
-											<form method="post" action="updatePassword">
-												<label for="currentPassword">Current Password:</label>
-												<input type="password" id="currentPassword" name="currentPassword" required><br><br>
 
-												<label for="newPassword">New Password:</label>
-												<input type="password" id="newPassword" name="newPassword" required><br><br>
-
-												<label for="confirmPassword">Confirm New Password:</label>
-												<input type="password" id="confirmPassword" name="confirmPassword" required><br><br>
-
-												<input type="submit" value="Update Password">
-											</form>
 
 										</form>
 									</div>

@@ -19,7 +19,9 @@ public class UpdateDetail extends HttpServlet {
     UserDAO userDAO = new UserDAO();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//       HttpSession là một phiên làm việc giữa máy chủ và người dùng, nó lưu trữ thông tin trạng thái của người dùng trong suốt phiên làm việc.
         HttpSession session = req.getSession();
+
         Account currentAccount = (Account) session.getAttribute("currentAccount");
 
 //        int userID = Integer.parseInt(req.getParameter("userID"));
