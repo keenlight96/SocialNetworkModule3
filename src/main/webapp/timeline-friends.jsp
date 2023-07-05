@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>
-    <title>Winku Social Network Toolkit</title>
+    <title>Winku</title>
     <link rel="icon" href="images/fav.png" type="image/png" sizes="16x16">
 
     <link rel="stylesheet" href="css/main.min.css">
@@ -216,7 +216,7 @@
         <div class="top-area">
             <ul class="main-menu">
                 <li>
-                    <a href="/time-line" title="">Home</a>
+                    <a href="/time-line?userId=${currentAccount.userId}" title="">Home</a>
                     <ul>
                         <li><a href="index-2.html" title="">Home Social</a></li>
                         <li><a href="index2.html" title="">Home Social 2</a></li>
@@ -473,10 +473,10 @@
                                     <h5>${user.firstName} ${user.lastName}</h5>
                                 </li>
                                 <li>
-                                    <a class="" href="/time-line?userId=${user.userId}" title="" data-ripple="">time line</a>
-                                    <a class="" href="timeline-photos.jsp" title="" data-ripple="">Photos</a>
+                                    <a class="" href="/time-line" title="" data-ripple="">time line</a>
+                                    <a class="" href="/timeline-photos" title="" data-ripple="">Photos</a>
                                     <a class="" href="timeline-videos.jsp" title="" data-ripple="">Videos</a>
-                                    <a class="active" href="/timeline-friends?userId=${user.userId}" title="" data-ripple="">Friends</a>
+                                    <a class="active" href="/timeline-friends" title="" data-ripple="">Friends</a>
                                     <a class="" href="timeline-groups.jsp" title="" data-ripple="">Groups</a>
                                     <a class="" href="about.html" title="" data-ripple="">about</a>
                                     <a class="" href="#" title="" data-ripple="">more</a>
@@ -538,7 +538,7 @@
                                             </li>
                                             <li>
                                                 <i class="fa fa-bar-chart-o"></i>
-                                                <a href="insights.html" title="">insights</a>
+                                                <a href="/detailUpdate" title="">Edit Profile</a>
                                             </li>
                                             <li>
                                                 <i class="ti-power-off"></i>

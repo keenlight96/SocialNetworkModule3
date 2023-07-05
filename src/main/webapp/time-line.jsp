@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content=""/>
     <meta name="keywords" content=""/>
-    <title>Winku Social Network Toolkit</title>
+    <title>Winku</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -236,7 +236,7 @@
         <div class="top-area">
             <ul class="main-menu">
                 <li>
-                    <a href="/time-line" title="">Home</a>
+                    <a href="/time-line?userId=${currentAccount.userId}" title="">Home</a>
                     <ul>
                         <li><a href="index-2.html" title="">Home Social</a></li>
                         <li><a href="index2.html" title="">Home Social 2</a></li>
@@ -460,7 +460,7 @@
         <div class="feature-photo">
             <figure><img src="images/resources/timeline-1.jpg" alt=""></figure>
             <div class="add-btn">
-<%--                <span>1205 followers</span>--%>
+                <%--                <span>1205 followers</span>--%>
                 <a href="#" title="" data-ripple="">Add Friend</a>
             </div>
             <form class="edit-phto">
@@ -475,7 +475,7 @@
                     <div class="col-lg-2 col-sm-3">
                         <div class="user-avatar">
                             <figure>
-                                <img id="image" src="images/resources/user-avatar.jpg" alt="" style="width: 100%; height: 100%">
+                                <img id="image" src="images/resources/user-avatar.jpg" alt="">
                                 <form action="/time-line" class="edit-phto">
                                     <i class="fa fa-camera-retro"></i>
                                     <label class="fileContainer">
@@ -495,7 +495,7 @@
                                 </li>
                                 <li>
                                     <a class="active" href="/time-line?userId=${user.userId}" title="" data-ripple="">time line</a>
-                                    <a class="" href="timeline-photos.jsp" title="" data-ripple="">Photos</a>
+                                    <a class="" href="/timeline-photos" title="" data-ripple="">Photos</a>
                                     <a class="" href="timeline-videos.jsp" title="" data-ripple="">Videos</a>
                                     <a class="" href="/timeline-friends?userId=${user.userId}" title="" data-ripple="">Friends</a>
                                     <a class="" href="timeline-groups.jsp" title="" data-ripple="">Groups</a>
@@ -562,7 +562,7 @@
                                             </li>
                                             <li>
                                                 <i class="fa fa-bar-chart-o"></i>
-                                                <a href="insights.html" title="">insights</a>
+                                                <a href="/detailUpdate" title="">Edit Profile</a>
                                             </li>
                                             <li>
                                                 <i class="ti-power-off"></i>
@@ -573,74 +573,74 @@
                                     <div class="widget">
                                         <h4 class="widget-title">Recent Activity</h4>
                                         <ul class="activitiez">
-<%--                                            <li>--%>
-<%--                                                <div class="activity-meta">--%>
-<%--                                                    <i>10 hours Ago</i>--%>
-<%--                                                    <span><a href="#" title="">Commented on Video posted </a></span>--%>
-<%--                                                    <h6>by <a href="newsfeed.html">black demon.</a></h6>--%>
-<%--                                                </div>--%>
-<%--                                            </li>--%>
-<%--                                            <li>--%>
-<%--                                                <div class="activity-meta">--%>
-<%--                                                    <i>30 Days Ago</i>--%>
-<%--                                                    <span><a href="newsfeed.html" title="">Posted your status. “Hello guys, how are you?”</a></span>--%>
-<%--                                                </div>--%>
-<%--                                            </li>--%>
-<%--                                            <li>--%>
-<%--                                                <div class="activity-meta">--%>
-<%--                                                    <i>2 Years Ago</i>--%>
-<%--                                                    <span><a href="#" title="">Share a video on her timeline.</a></span>--%>
-<%--                                                    <h6>"<a href="newsfeed.html">you are so funny mr.been.</a>"</h6>--%>
-<%--                                                </div>--%>
-<%--                                            </li>--%>
+                                            <%--                                            <li>--%>
+                                            <%--                                                <div class="activity-meta">--%>
+                                            <%--                                                    <i>10 hours Ago</i>--%>
+                                            <%--                                                    <span><a href="#" title="">Commented on Video posted </a></span>--%>
+                                            <%--                                                    <h6>by <a href="newsfeed.html">black demon.</a></h6>--%>
+                                            <%--                                                </div>--%>
+                                            <%--                                            </li>--%>
+                                            <%--                                            <li>--%>
+                                            <%--                                                <div class="activity-meta">--%>
+                                            <%--                                                    <i>30 Days Ago</i>--%>
+                                            <%--                                                    <span><a href="newsfeed.html" title="">Posted your status. “Hello guys, how are you?”</a></span>--%>
+                                            <%--                                                </div>--%>
+                                            <%--                                            </li>--%>
+                                            <%--                                            <li>--%>
+                                            <%--                                                <div class="activity-meta">--%>
+                                            <%--                                                    <i>2 Years Ago</i>--%>
+                                            <%--                                                    <span><a href="#" title="">Share a video on her timeline.</a></span>--%>
+                                            <%--                                                    <h6>"<a href="newsfeed.html">you are so funny mr.been.</a>"</h6>--%>
+                                            <%--                                                </div>--%>
+                                            <%--                                            </li>--%>
                                         </ul>
                                     </div><!-- recent activites -->
-<%--                                    <div class="widget stick-widget">--%>
-<%--                                        <h4 class="widget-title">Who's follownig</h4>--%>
-<%--                                        <ul class="followers">--%>
-<%--                                            <li>--%>
-<%--                                                <figure><img src="images/resources/friend-avatar2.jpg" alt=""></figure>--%>
-<%--                                                <div class="friend-meta">--%>
-<%--                                                    <h4><a href="time-line.html" title="">Kelly Bill</a></h4>--%>
-<%--                                                    <a href="#" title="" class="underline">Add Friend</a>--%>
-<%--                                                </div>--%>
-<%--                                            </li>--%>
-<%--                                            <li>--%>
-<%--                                                <figure><img src="images/resources/friend-avatar4.jpg" alt=""></figure>--%>
-<%--                                                <div class="friend-meta">--%>
-<%--                                                    <h4><a href="time-line.html" title="">Issabel</a></h4>--%>
-<%--                                                    <a href="#" title="" class="underline">Add Friend</a>--%>
-<%--                                                </div>--%>
-<%--                                            </li>--%>
-<%--                                            <li>--%>
-<%--                                                <figure><img src="images/resources/friend-avatar6.jpg" alt=""></figure>--%>
-<%--                                                <div class="friend-meta">--%>
-<%--                                                    <h4><a href="time-line.html" title="">Andrew</a></h4>--%>
-<%--                                                    <a href="#" title="" class="underline">Add Friend</a>--%>
-<%--                                                </div>--%>
-<%--                                            </li>--%>
-<%--                                            <li>--%>
-<%--                                                <figure><img src="images/resources/friend-avatar8.jpg" alt=""></figure>--%>
-<%--                                                <div class="friend-meta">--%>
-<%--                                                    <h4><a href="time-line.html" title="">Sophia</a></h4>--%>
-<%--                                                    <a href="#" title="" class="underline">Add Friend</a>--%>
-<%--                                                </div>--%>
-<%--                                            </li>--%>
-<%--                                            <li>--%>
-<%--                                                <figure><img src="images/resources/friend-avatar3.jpg" alt=""></figure>--%>
-<%--                                                <div class="friend-meta">--%>
-<%--                                                    <h4><a href="time-line.html" title="">Allen</a></h4>--%>
-<%--                                                    <a href="#" title="" class="underline">Add Friend</a>--%>
-<%--                                                </div>--%>
-<%--                                            </li>--%>
-<%--                                        </ul>--%>
-<%--                                    </div><!-- who's following -->--%>
+                                    <%--                                    <div class="widget stick-widget">--%>
+                                    <%--                                        <h4 class="widget-title">Who's follownig</h4>--%>
+                                    <%--                                        <ul class="followers">--%>
+                                    <%--                                            <li>--%>
+                                    <%--                                                <figure><img src="images/resources/friend-avatar2.jpg" alt=""></figure>--%>
+                                    <%--                                                <div class="friend-meta">--%>
+                                    <%--                                                    <h4><a href="time-line.html" title="">Kelly Bill</a></h4>--%>
+                                    <%--                                                    <a href="#" title="" class="underline">Add Friend</a>--%>
+                                    <%--                                                </div>--%>
+                                    <%--                                            </li>--%>
+                                    <%--                                            <li>--%>
+                                    <%--                                                <figure><img src="images/resources/friend-avatar4.jpg" alt=""></figure>--%>
+                                    <%--                                                <div class="friend-meta">--%>
+                                    <%--                                                    <h4><a href="time-line.html" title="">Issabel</a></h4>--%>
+                                    <%--                                                    <a href="#" title="" class="underline">Add Friend</a>--%>
+                                    <%--                                                </div>--%>
+                                    <%--                                            </li>--%>
+                                    <%--                                            <li>--%>
+                                    <%--                                                <figure><img src="images/resources/friend-avatar6.jpg" alt=""></figure>--%>
+                                    <%--                                                <div class="friend-meta">--%>
+                                    <%--                                                    <h4><a href="time-line.html" title="">Andrew</a></h4>--%>
+                                    <%--                                                    <a href="#" title="" class="underline">Add Friend</a>--%>
+                                    <%--                                                </div>--%>
+                                    <%--                                            </li>--%>
+                                    <%--                                            <li>--%>
+                                    <%--                                                <figure><img src="images/resources/friend-avatar8.jpg" alt=""></figure>--%>
+                                    <%--                                                <div class="friend-meta">--%>
+                                    <%--                                                    <h4><a href="time-line.html" title="">Sophia</a></h4>--%>
+                                    <%--                                                    <a href="#" title="" class="underline">Add Friend</a>--%>
+                                    <%--                                                </div>--%>
+                                    <%--                                            </li>--%>
+                                    <%--                                            <li>--%>
+                                    <%--                                                <figure><img src="images/resources/friend-avatar3.jpg" alt=""></figure>--%>
+                                    <%--                                                <div class="friend-meta">--%>
+                                    <%--                                                    <h4><a href="time-line.html" title="">Allen</a></h4>--%>
+                                    <%--                                                    <a href="#" title="" class="underline">Add Friend</a>--%>
+                                    <%--                                                </div>--%>
+                                    <%--                                            </li>--%>
+                                    <%--                                        </ul>--%>
+                                    <%--                                    </div><!-- who's following -->--%>
                                 </aside>
                             </div><!-- sidebar -->
                             <div class="col-lg-6">
                                 <div class="loadMore">
                                     <div class="central-meta item">
-                                        <c:if test="${isOwner}">
+                                        <c:if test="${currentAccount.userId == currentProfile.userId}">
                                             <div class="new-postbox">
                                                 <figure>
                                                     <img src="images/resources/admin2.jpg" alt="">
@@ -743,7 +743,7 @@
                                                                             <p>${bigPost.sharedPostShortContent}</p>
                                                                         </div>
                                                                         <c:if test="${bigPost.sharedPostPhoto != null}">
-                                                                            <img src="${bigPost.sharedPostPhoto}"
+                                                                            <img src="${bigPost.sharedPostPhoto.photoSource}"
                                                                                  alt="">
                                                                         </c:if>
                                                                     </div>
@@ -868,40 +868,40 @@
                             </div><!-- centerl meta -->
                             <div class="col-lg-3">
                                 <aside class="sidebar static">
-<%--                                    <div class="widget">--%>
-<%--                                        <div class="banner medium-opacity bluesh">--%>
-<%--                                            <div style="background-image: url(images/resources/baner-widgetbg.jpg)"--%>
-<%--                                                 class="bg-image"></div>--%>
-<%--                                            <div class="baner-top">--%>
-<%--                                                <span><img src="images/book-icon.png" alt=""></span>--%>
-<%--                                                <i class="fa fa-ellipsis-h"></i>--%>
-<%--                                            </div>--%>
-<%--                                            <div class="banermeta">--%>
-<%--                                                <p>--%>
-<%--                                                    create your own favourit page.--%>
-<%--                                                </p>--%>
-<%--                                                <span>like them all</span>--%>
-<%--                                                <a href="#" title="" data-ripple="">start now!</a>--%>
-<%--                                            </div>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
+                                    <%--                                    <div class="widget">--%>
+                                    <%--                                        <div class="banner medium-opacity bluesh">--%>
+                                    <%--                                            <div style="background-image: url(images/resources/baner-widgetbg.jpg)"--%>
+                                    <%--                                                 class="bg-image"></div>--%>
+                                    <%--                                            <div class="baner-top">--%>
+                                    <%--                                                <span><img src="images/book-icon.png" alt=""></span>--%>
+                                    <%--                                                <i class="fa fa-ellipsis-h"></i>--%>
+                                    <%--                                            </div>--%>
+                                    <%--                                            <div class="banermeta">--%>
+                                    <%--                                                <p>--%>
+                                    <%--                                                    create your own favourit page.--%>
+                                    <%--                                                </p>--%>
+                                    <%--                                                <span>like them all</span>--%>
+                                    <%--                                                <a href="#" title="" data-ripple="">start now!</a>--%>
+                                    <%--                                            </div>--%>
+                                    <%--                                        </div>--%>
+                                    <%--                                    </div>--%>
                                     <div class="widget friend-list stick-widget">
                                         <h4 class="widget-title">Friends</h4>
                                         <div id="searchDir"></div>
                                         <ul id="people-list" class="friendz-list">
                                             <c:forEach var="friend" items="${friends}">
-                                            <li>
-                                                <figure>
-                                                    <img src="images/resources/friend-avatar.jpg" alt="">
-<%--                                                    <span class="status f-online"></span>--%>
-                                                </figure>
-                                                <div class="friendz-meta">
-                                                    <a href="/time-line?userId=${friend.userId}">${friend.firstName} ${friend.lastName}</a>
-<%--                                                    <i><a href="https://wpkixx.com/cdn-cgi/l/email-protection"--%>
-<%--                                                          class="__cf_email__"--%>
-<%--                                                          data-cfemail="4136282f352433322e2d25243301262c20282d6f222e2c">[email&#160;protected]</a></i>--%>
-                                                </div>
-                                            </li>
+                                                <li>
+                                                    <figure>
+                                                        <img src="images/resources/friend-avatar.jpg" alt="">
+                                                            <%--                                                    <span class="status f-online"></span>--%>
+                                                    </figure>
+                                                    <div class="friendz-meta">
+                                                        <a href="/time-line?userId=${friend.userId}">${friend.firstName} ${friend.lastName}</a>
+                                                            <%--                                                    <i><a href="https://wpkixx.com/cdn-cgi/l/email-protection"--%>
+                                                            <%--                                                          class="__cf_email__"--%>
+                                                            <%--                                                          data-cfemail="4136282f352433322e2d25243301262c20282d6f222e2c">[email&#160;protected]</a></i>--%>
+                                                    </div>
+                                                </li>
                                             </c:forEach>
                                         </ul>
                                         <div class="chat-box">

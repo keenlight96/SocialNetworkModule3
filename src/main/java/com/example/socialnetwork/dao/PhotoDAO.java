@@ -2,6 +2,7 @@ package com.example.socialnetwork.dao;
 
 import com.example.socialnetwork.model.Photo;
 import com.example.socialnetwork.model.Post;
+import com.example.socialnetwork.model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -52,7 +53,7 @@ public class PhotoDAO {
             preparedStatement.setInt(1, post.getPostId());
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            while (resultSet.next()) {
+            if (resultSet.next()) {
                 int photoId = resultSet.getInt("PhotoId");
                 int postId = resultSet.getInt("PostId");
                 String photoSource = resultSet.getString("PhotoSource");
@@ -64,4 +65,26 @@ public class PhotoDAO {
         }
         return null;
     }
+
+    public List<Photo> selectAllPhotosByUser(User user) {
+        List<Photo> photos = new ArrayList<>();
+        String sql = "select * from Photo join Post on Photo.postId = Post.postId where Post.userId = ? order by Post.postDate desc";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, user.getUserId());
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                int photoId = resultSet.getInt("PhotoId");
+                int postId = resultSet.getInt("PostId");
+                String photoSource = resultSet.getString("PhotoSource");
+
+                photos.add(new Photo(photoId, postId, photoSource));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return photos;
+    }
+
 }

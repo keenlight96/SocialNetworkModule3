@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-	<title>Winku Social Network Toolkit</title>
+	<title>Winku</title>
     <link rel="icon" href="images/fav.png" type="image/png" sizes="16x16"> 
     
     <link rel="stylesheet" href="css/main.min.css">
@@ -660,7 +660,7 @@
 											</div>
 											<div class="form-group">	
 											  <input type="text" name="address" value="${user.address}" required="required"/>
-											  <label class="control-label" for="input" >City</label><i class="mtrl-select"></i>
+											  <label class="control-label" for="input" >Address</label><i class="mtrl-select"></i>
 											</div>
 											<div class="submit-btns">
 												<button type="button" class="mtr-btn"><span>Cancel</span></button>

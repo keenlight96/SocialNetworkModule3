@@ -38,6 +38,8 @@ public class PostDetailServlet extends HttpServlet {
         }
 
         User user = userDAO.selectUserByUserId(post.getUserId());
+        session.setAttribute("currentProfile", user);
+
         BigPost bigPost = bigPostService.getBigPostByPost(post);
         bigPost.setLiked(bigPostService.isLiked(post, currentAccount));
 

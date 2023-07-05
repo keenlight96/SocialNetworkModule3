@@ -37,6 +37,7 @@ public class BigPostService {
                     sharedPostShortContent = sharedPostFullContent.substring(0, 50) + "...";
                 }
                 Photo sharedPostPhoto = photoDAO.selectFirstPhotosByPost(sharedPost);
+                System.out.println(sharedPostPhoto.getPhotoSource());
 
                 bigPosts.add(new BigPost(post.getPostId(), user, post.getContent(), post.getPostDate(),
                         sharedPost, sharedPostUser, sharedPostShortContent, sharedPostPhoto, photos, likes, false, bigComments));

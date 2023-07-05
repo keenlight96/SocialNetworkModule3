@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="" />
     <meta name="keywords" content="" />
-	<title>Winku Social Network Toolkit</title>
+	<title>Winku</title>
     <link rel="icon" href="images/fav.png" type="image/png" sizes="16x16"> 
     
     <link rel="stylesheet" href="css/main.min.css">
@@ -216,7 +216,7 @@
 		<div class="top-area">
 			<ul class="main-menu">
 				<li>
-					<a href="#" title="">Home</a>
+					<a href="/time-line?userId=${currentAccount.userId}" title="">Home</a>
 					<ul>
 						<li><a href="index-2.html" title="">Home Social</a></li>
 						<li><a href="index2.html" title="">Home Social 2</a></li>
@@ -470,14 +470,13 @@
 						<div class="timeline-info">
 							<ul>
 								<li class="admin-name">
-								  <h5>Janice Griffith</h5>
-								  <span>Group Admin</span>
+								  <h5>${user.firstName} ${user.lastName}</h5>
 								</li>
 								<li>
-									<a class="" href="time-line.html" title="" data-ripple="">time line</a>
-									<a class="active" href="timeline-photos.jsp" title="" data-ripple="">Photos</a>
+									<a class="" href="/time-line" title="" data-ripple="">time line</a>
+									<a class="active" href="/timeline-photos" title="" data-ripple="">Photos</a>
 									<a class="" href="timeline-videos.jsp" title="" data-ripple="">Videos</a>
-									<a class="" href="timeline-friends.jsp" title="" data-ripple="">Friends</a>
+									<a class="" href="/timeline-friends" title="" data-ripple="">Friends</a>
 									<a class="" href="timeline-groups.jsp" title="" data-ripple="">Groups</a>
 									<a class="" href="about.html" title="" data-ripple="">about</a>
 									<a class="" href="#" title="" data-ripple="">more</a>
@@ -539,30 +538,16 @@
 											</li>
 											<li>
 												<i class="fa fa-bar-chart-o"></i>
-												<a href="insights.html" title="">insights</a>
+												<a href="/detailUpdate" title="">Edit Profile</a>
 											</li>
 											<li>
 												<i class="ti-power-off"></i>
-												<a href="landing.html" title="">Logout</a>
+												<a href="/logout" title="">Logout</a>
 											</li>
 										</ul>
 									</div><!-- Shortcuts -->
 									<div class="widget">
 										<h4 class="widget-title">Profile intro</h4>
-										<ul class="short-profile">
-											<li>
-												<span>about</span>
-												<p>Hi, i am jhon kates, i am 32 years old and worked as a web developer in microsoft company. </p>
-											</li>
-											<li>
-												<span>fav tv show</span>
-												<p>Sacred Games, Spartcus Blood, Games of theron</p>
-											</li>
-											<li>
-												<span>favourit music</span>
-												<p>Justin Biber, Nati Natsha, Shakira</p>
-											</li>
-										</ul>
 									</div><!-- profile intro widget -->
 
 								</aside>
@@ -570,206 +555,36 @@
 							<div class="col-lg-6">
 								<div class="central-meta">
 									<ul class="photos">
-
-										<li>
-											<a class="strip" href="https://cdn.akamai.steamstatic.com/steam/apps/367520/capsule_616x353.jpg?t=1667006028" style="align-content: center" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
-												<img src="https://cdn.akamai.steamstatic.com/steam/apps/367520/capsule_616x353.jpg?t=1667006028" alt=""></a>
-										</li>
-										<li>
-											<a class="strip" href="images/resources/photo-33.jpg" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
-												<img src="images/resources/photo3.jpg" alt=""></a>
-										</li>
-										<li>
-											<a class="strip" href="images/resources/photo-44.jpg" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
-												<img src="images/resources/photo4.jpg" alt=""></a>
-										</li>
-										<li>
-											<a class="strip" href="images/resources/photo-55.jpg" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
-												<img src="images/resources/photo5.jpg" alt=""></a>
-										</li>
-
-										<li>
-											<a class="strip" href="images/resources/photo-66.jpg" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
-												<img src="images/resources/photo6.jpg" alt=""></a>
-										</li>
-										<li>
-											<a class="strip" href="images/resources/photo-77.jpg" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
-												<img src="images/resources/photo7.jpg" alt=""></a>
-										</li>
-										<li>
-											<a class="strip" href="images/resources/photo-88.jpg" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
-												<img src="images/resources/photo8.jpg" alt=""></a>
-										</li>
-
-										<li>
-											<a class="strip" href="images/resources/photo-99.jpg" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
-												<img src="images/resources/photo12.jpg" alt=""></a>
-										</li>
-										<li>
-											<a class="strip" href="images/resources/photo-101.jpg" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
-												<img src="images/resources/photo10.jpg" alt=""></a>
-										</li>
-										<li>
-											<a class="strip" href="images/resources/photo-101.jpg" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
-												<img src="images/resources/photo11.jpg" alt=""></a>
-										</li>
-										<li>
-											<a class="strip" href="images/resources/photo-22.jpg" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
-												<img src="images/resources/photo1.jpg" alt=""></a>
-										</li>
-										<li>
-											<a class="strip" href="images/resources/photo-33.jpg" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
-												<img src="images/resources/photo9.jpg" alt=""></a>
-										</li>
-										<li>
-											<a class="strip" href="images/resources/photo-99.jpg" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
-												<img src="images/resources/photo12.jpg" alt=""></a>
-										</li>
-										<li>
-											<a class="strip" href="images/resources/photo-66.jpg" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
-												<img src="images/resources/photo6.jpg" alt=""></a>
-										</li>
-										<li>
-											<a class="strip" href="images/resources/photo-66.jpg" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
-												<img src="images/resources/photo13.jpg" alt=""></a>
-										</li>
+										<c:forEach var="photo" items="${photos}">
+											<li>
+												<a class="strip" href="${photo.photoSource}" style="align-content: center" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
+													<img src="${photo.photoSource}" alt=""></a>
+											</li>
+										</c:forEach>
 									</ul>
 									<div class="lodmore"><button class="btn-view btn-load-more"></button></div>
 								</div><!-- photos -->
 							</div><!-- centerl meta -->
 							<div class="col-lg-3">
 								<aside class="sidebar static">
-									<div class="widget">
-										<h4 class="widget-title">Twitter feed</h4>
-										<ul class="twiter-feed">
-											<li>
-												<i class="fa fa-twitter"></i>
-												<span>
-													<i>jhon william</i>
-													@jhonwilliam
-												</span>
-												<p>tomorrow with the company we were working and 5 child run away from the working place. <a href="#" title="">#daydream5k</a> </p>
-												<em>2 hours ago</em>
-											</li>
-											<li>
-												<i class="fa fa-twitter"></i>
-												<span>
-													<i>Kelly watson</i>
-													@kelly
-												</span>
-												<p>tomorrow with the company we were working and 5 child run away from the working place. <a href="#" title="">#daydream5k</a> </p>
-												<em>2 hours ago</em>
-											</li>
-											<li>
-												<i class="fa fa-twitter"></i>
-												<span>
-													<i>Jony bravo</i>
-													@jonibravo
-												</span>
-												<p>tomorrow with the company we were working and 5 child run away from the working place. <a href="#" title="">#daydream5k</a> </p>
-												<em>2 hours ago</em>
-											</li>
-										</ul>
-									</div><!-- twitter feed-->
 									<div class="widget friend-list stick-widget">
 										<h4 class="widget-title">Friends</h4>
 										<div id="searchDir"></div>
 										<ul id="people-list" class="friendz-list">
-											<li>
-												<figure>
-													<img src="images/resources/friend-avatar.jpg" alt="">
-													<span class="status f-online"></span>
-												</figure>
-												<div class="friendz-meta">
-													<a href="time-line.html">bucky barnes</a>
-													<i><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="36415f5842534445595a52534476515b575f5a1855595b">[email&#160;protected]</a></i>
-												</div>
-											</li>
-											<li>
-												<figure>
-													<img src="images/resources/friend-avatar2.jpg" alt="">
-													<span class="status f-away"></span>
-												</figure>
-												<div class="friendz-meta">
-													<a href="time-line.html">Sarah Loren</a>
-													<i><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="741615061a1107341319151d185a171b19">[email&#160;protected]</a></i>
-												</div>
-											</li>
-											<li>
-												<figure>
-													<img src="images/resources/friend-avatar3.jpg" alt="">
-													<span class="status f-off"></span>
-												</figure>
-												<div class="friendz-meta">
-													<a href="time-line.html">jason borne</a>
-													<i><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3852594b57565a785f55595154165b5755">[email&#160;protected]</a></i>
-												</div>
-											</li>
-											<li>
-												<figure>
-													<img src="images/resources/friend-avatar4.jpg" alt="">
-													<span class="status f-off"></span>
-												</figure>
-												<div class="friendz-meta">
-													<a href="time-line.html">Cameron diaz</a>
-													<i><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="761c170519181436111b171f1a5815191b">[email&#160;protected]</a></i>
-												</div>
-											</li>
-											<li>
-												
-												<figure>
-													<img src="images/resources/friend-avatar5.jpg" alt="">
-													<span class="status f-online"></span>
-												</figure>
-												<div class="friendz-meta">
-													<a href="time-line.html">daniel warber</a>
-													<i><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6a000b190504082a0d070b030644090507">[email&#160;protected]</a></i>
-												</div>
-											</li>
-											<li>
-												
-												<figure>
-													<img src="images/resources/friend-avatar6.jpg" alt="">
-													<span class="status f-away"></span>
-												</figure>
-												<div class="friendz-meta">
-													<a href="time-line.html">andrew</a>
-													<i><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5c363d2f33323e1c3b313d3530723f3331">[email&#160;protected]</a></i>
-												</div>
-											</li>
-											<li>
-												
-												<figure>
-													<img src="images/resources/friend-avatar7.jpg" alt="">
-													<span class="status f-off"></span>
-												</figure>
-												<div class="friendz-meta">
-													<a href="time-line.html">amy watson</a>
-													<i><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c3a9a2b0acada183a4aea2aaafeda0acae">[email&#160;protected]</a></i>
-												</div>
-											</li>
-											<li>
-												
-												<figure>
-													<img src="images/resources/friend-avatar5.jpg" alt="">
-													<span class="status f-online"></span>
-												</figure>
-												<div class="friendz-meta">
-													<a href="time-line.html">daniel warber</a>
-													<i><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e08a81938f8e82a0878d81898cce838f8d">[email&#160;protected]</a></i>
-												</div>
-											</li>
-											<li>
-												
-												<figure>
-													<img src="images/resources/friend-avatar2.jpg" alt="">
-													<span class="status f-away"></span>
-												</figure>
-												<div class="friendz-meta">
-													<a href="time-line.html">Sarah Loren</a>
-													<i><a href="https://wpkixx.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="781a190a161d0b381f15191114561b1715">[email&#160;protected]</a></i>
-												</div>
-											</li>
+											<c:forEach var="friend" items="${friends}">
+												<li>
+													<figure>
+														<img src="images/resources/friend-avatar.jpg" alt="">
+															<%--                                                    <span class="status f-online"></span>--%>
+													</figure>
+													<div class="friendz-meta">
+														<a href="/time-line?userId=${friend.userId}">${friend.firstName} ${friend.lastName}</a>
+															<%--                                                    <i><a href="https://wpkixx.com/cdn-cgi/l/email-protection"--%>
+															<%--                                                          class="__cf_email__"--%>
+															<%--                                                          data-cfemail="4136282f352433322e2d25243301262c20282d6f222e2c">[email&#160;protected]</a></i>--%>
+													</div>
+												</li>
+											</c:forEach>
 										</ul>
 										<div class="chat-box">
 											<div class="chat-head">
@@ -783,30 +598,39 @@
 											<div class="chat-list">
 												<ul>
 													<li class="me">
-														<div class="chat-thumb"><img src="images/resources/chatlist1.jpg" alt=""></div>
+														<div class="chat-thumb"><img
+																src="images/resources/chatlist1.jpg" alt=""></div>
 														<div class="notification-event">
 															<span class="chat-message-item">
 																Hi James! Please remember to buy the food for tomorrow! I’m gonna be handling the gifts and Jake’s gonna get the drinks
 															</span>
-															<span class="notification-date"><time datetime="2004-07-24T18:18" class="entry-date updated">Yesterday at 8:10pm</time></span>
+															<span class="notification-date"><time
+																	datetime="2004-07-24T18:18"
+																	class="entry-date updated">Yesterday at 8:10pm</time></span>
 														</div>
 													</li>
 													<li class="you">
-														<div class="chat-thumb"><img src="images/resources/chatlist2.jpg" alt=""></div>
+														<div class="chat-thumb"><img
+																src="images/resources/chatlist2.jpg" alt=""></div>
 														<div class="notification-event">
 															<span class="chat-message-item">
 																Hi James! Please remember to buy the food for tomorrow! I’m gonna be handling the gifts and Jake’s gonna get the drinks
 															</span>
-															<span class="notification-date"><time datetime="2004-07-24T18:18" class="entry-date updated">Yesterday at 8:10pm</time></span>
+															<span class="notification-date"><time
+																	datetime="2004-07-24T18:18"
+																	class="entry-date updated">Yesterday at 8:10pm</time></span>
 														</div>
 													</li>
 													<li class="me">
-														<div class="chat-thumb"><img src="images/resources/chatlist1.jpg" alt=""></div>
+														<div class="chat-thumb"><img
+																src="images/resources/chatlist1.jpg" alt=""></div>
 														<div class="notification-event">
 															<span class="chat-message-item">
 																Hi James! Please remember to buy the food for tomorrow! I’m gonna be handling the gifts and Jake’s gonna get the drinks
 															</span>
-															<span class="notification-date"><time datetime="2004-07-24T18:18" class="entry-date updated">Yesterday at 8:10pm</time></span>
+															<span class="notification-date"><time
+																	datetime="2004-07-24T18:18"
+																	class="entry-date updated">Yesterday at 8:10pm</time></span>
 														</div>
 													</li>
 												</ul>

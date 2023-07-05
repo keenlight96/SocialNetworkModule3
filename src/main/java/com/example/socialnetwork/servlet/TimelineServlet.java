@@ -30,17 +30,21 @@ public class TimelineServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         Account currentAccount = (Account) session.getAttribute("currentAccount");
+        User currentProfile = (User) session.getAttribute("currentProfile");
 
         int userId = 0;
         boolean isOwner = false;
-        if (req.getParameter("userId") == null) {
-            isOwner = true;
-            userId = currentAccount.getUserId();
-        } else {
+        if (req.getParameter("userId") != null) {
             userId = Integer.parseInt(req.getParameter("userId"));
             if (userId == currentAccount.getUserId())
                 isOwner = true;
+        } else if (currentProfile != null) {
+            userId = currentProfile.getUserId();
+        } else {
+            isOwner = true;
+            userId = currentAccount.getUserId();
         }
+
         req.setAttribute("isOwner", isOwner);
 
         // get all information of that profile
