@@ -7,6 +7,7 @@ public class DateService {
     public static Date convertToDate(int year, int month, int day) {
         try {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            System.out.println(simpleDateFormat.parse(year + "-" + month + "-" + day));
             return simpleDateFormat.parse(year + "-" + month + "-" + day);
         } catch (Exception e) {
             e.printStackTrace();

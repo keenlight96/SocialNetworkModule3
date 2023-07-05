@@ -1,5 +1,6 @@
 package com.example.socialnetwork.model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class User {
@@ -15,7 +16,7 @@ public class User {
     private String bgSource; // background img
     private String extraField1 = "Not";
 
-    public User() {
+    public User(int userId, String firstName, String lastName, LocalDate birthday, String gender, String email, String phoneNumber, String address) {
     }
 
     public User(int userId, String firstName, String lastName, Date birthday, String gender, String email, String phoneNumber, String address) {

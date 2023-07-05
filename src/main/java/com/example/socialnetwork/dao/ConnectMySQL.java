@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class ConnectMySQL {
     public static final String URL = "jdbc:mysql://localhost:3306/socialnetwork?useSSL=false&allowPublicKeyRetrieval=true";
     public static final String USERNAME = "root";
-    public static final String PASSWORD = "0123456789";
+    public static final String PASSWORD = "123456";
 
     public static Connection getConnection() {
         try {
