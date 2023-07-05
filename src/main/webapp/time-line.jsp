@@ -475,12 +475,13 @@
                     <div class="col-lg-2 col-sm-3">
                         <div class="user-avatar">
                             <figure>
-                                <img src="images/resources/user-avatar.jpg" alt="">
-                                <form class="edit-phto">
+                                <img id="image" src="images/resources/user-avatar.jpg" alt="" style="width: 100%; height: 100%">
+                                <form action="/time-line" class="edit-phto">
                                     <i class="fa fa-camera-retro"></i>
                                     <label class="fileContainer">
                                         Edit Display Photo
-                                        <input type="file"/>
+                                        <input type="file" name="" id="imageFile" onchange="chooseFile(this)"
+                                               accept="image/gif, image/jpeg, image/png"/>
                                     </label>
                                 </form>
                             </figure>
@@ -493,10 +494,10 @@
                                     <h5>${user.firstName} ${user.lastName}</h5>
                                 </li>
                                 <li>
-                                    <a class="active" href="/time-line" title="" data-ripple="">time line</a>
+                                    <a class="active" href="/time-line?userId=${user.userId}" title="" data-ripple="">time line</a>
                                     <a class="" href="timeline-photos.jsp" title="" data-ripple="">Photos</a>
                                     <a class="" href="timeline-videos.jsp" title="" data-ripple="">Videos</a>
-                                    <a class="" href="/timeline-friends" title="" data-ripple="">Friends</a>
+                                    <a class="" href="/timeline-friends?userId=${user.userId}" title="" data-ripple="">Friends</a>
                                     <a class="" href="timeline-groups.jsp" title="" data-ripple="">Groups</a>
                                     <a class="" href="about.html" title="" data-ripple="">about</a>
                                     <a class="" href="#" title="" data-ripple="">more</a>
@@ -783,11 +784,11 @@
                                                                 <button type="button" class="fa fa-share-alt"
                                                                         style="border: none; outline: none; background-color: transparent;"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#exampleModal">
+                                                                        data-bs-target="#exampleModal${bigPost.postId}">
                                                                 </button>
 
                                                                 <!-- Modal -->
-                                                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                                <div class="modal fade" id="exampleModal${bigPost.postId}" tabindex="-1"
                                                                      aria-labelledby="exampleModalLabel"
                                                                      aria-hidden="true">
                                                                     <div class="modal-dialog">
@@ -1146,7 +1147,20 @@
 <script data-cfasync="false" src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <script src="js/main.min.js"></script>
 <script src="js/script.js"></script>
-
+<script>
+    // JS
+    function chooseFile(fileInput) {
+        if (fileInput.files && fileInput.files[0]) {
+            let reader = new FileReader();
+            console.log('onload called');
+            reader.onload = function (e) {
+                document.getElementById('image').src = e.target.result;
+                saveImageToDatabase(fileInput.files[0]);
+            };
+            reader.readAsDataURL(fileInput.files[0]);
+        }
+    }
+</script>
 </body>
 
 </html>

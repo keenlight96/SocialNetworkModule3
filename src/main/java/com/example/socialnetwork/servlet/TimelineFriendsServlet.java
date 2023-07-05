@@ -25,6 +25,7 @@ public class TimelineFriendsServlet extends HttpServlet {
         Account currentAccount = (Account) session.getAttribute("currentAccount");
         User currentProfile = (User) session.getAttribute("currentProfile");
 
+        req.setAttribute("currentAccount", currentAccount);
         req.setAttribute("user", currentProfile);
 
         List<User> friends = friendsService.getAllFriendsByUser(currentProfile);

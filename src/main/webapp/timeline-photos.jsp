@@ -572,8 +572,8 @@
 									<ul class="photos">
 
 										<li>
-											<a class="strip" href="images/resources/photo-22.jpg" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
-												<img src="images/resources/photo2.jpg" alt=""></a>
+											<a class="strip" href="https://cdn.akamai.steamstatic.com/steam/apps/367520/capsule_616x353.jpg?t=1667006028" style="align-content: center" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">
+												<img src="https://cdn.akamai.steamstatic.com/steam/apps/367520/capsule_616x353.jpg?t=1667006028" alt=""></a>
 										</li>
 										<li>
 											<a class="strip" href="images/resources/photo-33.jpg" title="" data-strip-group="mygroup" data-strip-group-options="loop: false">

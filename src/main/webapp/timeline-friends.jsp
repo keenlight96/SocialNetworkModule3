@@ -473,10 +473,10 @@
                                     <h5>${user.firstName} ${user.lastName}</h5>
                                 </li>
                                 <li>
-                                    <a class="" href="/time-line" title="" data-ripple="">time line</a>
+                                    <a class="" href="/time-line?userId=${user.userId}" title="" data-ripple="">time line</a>
                                     <a class="" href="timeline-photos.jsp" title="" data-ripple="">Photos</a>
                                     <a class="" href="timeline-videos.jsp" title="" data-ripple="">Videos</a>
-                                    <a class="active" href="/timeline-friends" title="" data-ripple="">Friends</a>
+                                    <a class="active" href="/timeline-friends?userId=${user.userId}" title="" data-ripple="">Friends</a>
                                     <a class="" href="timeline-groups.jsp" title="" data-ripple="">Groups</a>
                                     <a class="" href="about.html" title="" data-ripple="">about</a>
                                     <a class="" href="#" title="" data-ripple="">more</a>
@@ -576,6 +576,7 @@
                                             <li class="nav-item"><a class="${navFriends}" href="#frends"
                                                                     data-toggle="tab">My
                                                 Friends</a></li>
+                                            <c:if test="${currentAccount.userId == user.userId}">
                                             <li class="nav-item"><a class="${navFriendsReq}" href="#frends-req"
                                                                     data-toggle="tab">Friend
                                                 Requests</a></li>
@@ -585,6 +586,7 @@
                                             <li class="nav-item"><a class="${navFriendsSearch}" href="#frends-search"
                                                                     data-toggle="tab">Search
                                                 Friends</a></li>
+                                            </c:if>
                                         </ul>
 
                                         <!-- Tab panes -->

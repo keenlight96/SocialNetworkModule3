@@ -108,5 +108,32 @@ public class UserDAO {
         return users;
     }
 
+    public List<User> searchUsersByName(String searchName) {
+        List<User> users = new ArrayList<>();
+        String sql = "select * from User " +
+                "where FirstName like concat('%',?,'%')" +
+                "or LastName like concat('%',?,'%')";
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, searchName);
+            preparedStatement.setString(2, searchName);
+            ResultSet resultSet = preparedStatement.executeQuery();
 
+            while (resultSet.next()) {
+                int userid = resultSet.getInt("UserId");
+                String firstName = resultSet.getString("FirstName");
+                String lastName = resultSet.getString("LastName");
+                Date birthday = DateService.convertDateSQLToDate(resultSet.getString("Birthday"));
+                String gender = resultSet.getString("Gender");
+                String email = resultSet.getString("Email");
+                String phoneNumber = resultSet.getString("PhoneNumber");
+                String address = resultSet.getString("Address");
+
+                users.add(new User(userid, firstName, lastName, birthday, gender, email, phoneNumber, address)) ;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return users;
+    }
 }

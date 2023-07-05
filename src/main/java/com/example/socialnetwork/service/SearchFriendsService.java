@@ -15,35 +15,13 @@ public class SearchFriendsService {
 
     public List<User> searchFriends(Account currentAccount, String name) {
         List<User> results = new ArrayList<>();
-        List<User> users = userDAO.selectAllUsers();
+        List<User> users = userDAO.searchUsersByName(name);
         for (User user :
                 users) {
             if (user.getUserId() == currentAccount.getUserId())
                 continue;
-
             getStatus(currentAccount.getUserId(), user);
-
-            boolean check = false;
-            String[] firstNames = user.getFirstName().split(" ");
-            String[] lastNames = user.getLastName().split(" ");
-            for (String e :
-                    firstNames) {
-                if (e.equals(name)) {
-                    results.add(user);
-                    check = true;
-                    break;
-                }
-            }
-
-            if (!check) {
-                for (String e :
-                        lastNames) {
-                    if (e.equals(name)) {
-                        results.add(user);
-                        break;
-                    }
-                }
-            }
+            results.add(user);
         }
         return results;
     }

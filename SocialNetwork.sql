@@ -70,16 +70,12 @@ CREATE TABLE `Like` (
 );
 
 CREATE TABLE Share (
+                       ShareID int AUTO_INCREMENT PRIMARY KEY,
                        PostID int NOT NULL,
-                       UserID int NOT NULL,
-                       ShareDate datetime,
+                       PostSourceID int NOT NULL,
                        FOREIGN KEY (PostID) REFERENCES Post(PostID),
-                       FOREIGN KEY (UserID) REFERENCES User(UserID)
+                       FOREIGN KEY (PostSourceID) REFERENCES Post(PostID)
 );
-
-alter table Post add column ShareID int;
-alter table Share add column ShareID int Primary Key;
-alter table Share add column PostSourceID int;
 
 
 
