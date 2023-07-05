@@ -556,7 +556,7 @@
                                             </li>
                                             <li>
                                                 <i class="ti-share"></i>
-                                                <a href="edit-password.jsp" title="">Update Password</a>
+                                                <a href="/edit-password" title="">Update Password</a>
                                             </li>
                                             <li>
                                                 <i class="fa fa-bar-chart-o"></i>

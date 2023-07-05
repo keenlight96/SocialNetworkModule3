@@ -554,22 +554,19 @@
                                     <div class="editing-info">
                                         <h5 class="f-title"><i class="ti-info-alt"></i> Edit Basic Information</h5>
 
-                                        <form action="/user" method="post">
+                                        <form action="/changepassword" method="post">
                                             <h4>Update PassWord</h4>
-                                            <input type="text" id="userID" name="userID" hidden="hidden" value="${user.userId}"/>
+                                            <input type="text" id="userID" name="userId" hidden="hidden" value="${user.userId}"/>
 
                                             <div class="form-group half">
-                                                <input size="200" type="text" name="currentPassword" value="" required="required"/>
-                                                <label class="control-label" for="input">currentPassword</label><i class="mtrl-select"></i>
+                                                <input size="200" type="text" name="oldPassword" value="" required="required"/>
+                                                <label class="control-label" for="input">oldPassword</label><i class="mtrl-select"></i>
                                             </div>
                                             <div class="form-group half">
                                                 <input type="text" id="input" name="newPassword" value="" required="required"/>
                                                 <label class="control-label" for="input">newPassword</label><i class="mtrl-select"></i>
                                             </div>
-                                            <div class="form-group half">
-                                                <input type="text" id="" name="confirmPassword" value="" required="required"/>
-                                                <label class="control-label" for="input">confirmPassword</label><i class="mtrl-select"></i>
-                                            </div>
+
 
                                             <div class="submit-btns">
                                                 <button type="submit" class="mtr-btn"><span>Update PassWord</span></button>

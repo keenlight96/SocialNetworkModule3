@@ -107,5 +107,35 @@ public class UserDAO {
         }
     }
 
+    public boolean checkPassword(int userId, String password) {
+        try (PreparedStatement stmt = connection.prepareStatement("SELECT * FROM Account WHERE UserID = ? AND Password = ?")) {
+            stmt.setInt(1, userId);
+            stmt.setString(2, password);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                return rs.next(); // Trả về true nếu mật khẩu khớp
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return false;
+    }
+
+    public boolean updatePassword(int userId, String newPassword) {
+        try (PreparedStatement stmt = connection.prepareStatement("UPDATE Account SET Password = ? WHERE UserID = ?")) {
+            stmt.setString(1, newPassword);
+            stmt.setInt(2, userId);
+
+            int rowsAffected = stmt.executeUpdate();
+
+            return rowsAffected > 0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return false;
+    }
+
 
 }

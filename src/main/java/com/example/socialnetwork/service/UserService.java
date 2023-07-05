@@ -37,5 +37,17 @@ public class UserService {
         User user = new User(userId, firstName, lastName, birthday, gender, email, phoneNumber, address);
         return userDAO.updateUser(user);
     }
+
+    public boolean changePassword(int userId, String oldPassword, String newPassword) {
+        // Kiểm tra mật khẩu cũ của người dùng
+        boolean passwordMatched = userDAO.checkPassword(userId, oldPassword);
+
+        if (!passwordMatched) {
+            return false; // Trả về false nếu mật khẩu không khớp
+        }
+
+        // Cập nhật mật khẩu mới
+        return userDAO.updatePassword(userId, newPassword);
+    }
 }
 
